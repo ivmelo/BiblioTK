@@ -9,6 +9,6 @@ Sistema de gerenciamento de biblioteca, desenvolvido em Java com GUI Swing.
 códigos fonte.
 
 Equipe de desenvolvimento:
->> Rafael Garcia
->> Ivanilson Melo
->> Pedro Paulo
+Rafael Garcia
+Ivanilson Melo
+Pedro Paulo
