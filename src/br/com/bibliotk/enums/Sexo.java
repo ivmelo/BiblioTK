@@ -10,5 +10,4 @@ package br.com.bibliotk.enums;
  */
 public enum Sexo {
     MASCULINO, FEMININO;
-
 }

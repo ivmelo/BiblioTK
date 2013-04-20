@@ -4,8 +4,6 @@
  */
 package br.com.bibliotk.models;
 
-import br.com.bibliotk.enums.Sexo;
-import br.com.bibliotk.enums.UF;
 import java.util.Date;
 
 /**
@@ -17,7 +15,7 @@ public class Usuario {
     private String nome;
     private String cpf;
     private Date dataNascimento;
-    private Sexo sexo;
+    private String sexo;
     private String email;
     private String telefone;
     private String celular;
@@ -25,7 +23,7 @@ public class Usuario {
     private int num;
     private String bairro;
     private String complemento;
-    private UF uf;
+    private String uf;
     private String municipio;
     private Date dataCadastro;
     private boolean aptoEmprestimo;
@@ -62,11 +60,11 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public Sexo getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(Sexo sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -126,11 +124,11 @@ public class Usuario {
         this.complemento = complemento;
     }
 
-    public UF getUf() {
+    public String getUf() {
         return uf;
     }
 
-    public void setUf(UF uf) {
+    public void setUf(String uf) {
         this.uf = uf;
     }
 

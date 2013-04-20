@@ -4,6 +4,11 @@
  */
 package br.com.bibliotk.gui;
 
+import br.com.bibliotk.models.Database;
+import br.com.bibliotk.models.Usuario;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ivanilson
@@ -15,6 +20,27 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
      */
     public GerenciarUsuarios() {
         initComponents();
+        this.updateTable();
+    }
+    
+    private void updateTable() {
+        DefaultTableModel tTabela;
+        tTabela = (DefaultTableModel) jTable1.getModel();
+        tTabela.setNumRows(0);
+ 
+        ArrayList<Usuario> usuarios = Database.getUsuarios();
+ 
+        for (int linha = 0; linha < usuarios.size(); linha++)
+        {
+            Usuario u = usuarios.get(linha);
+ 
+            tTabela.addRow(new Object[]{1});
+ 
+            jTable1.setValueAt(u.getId(), linha, 0);
+            jTable1.setValueAt(u.getNome(), linha, 1);
+            jTable1.setValueAt(u.getCpf(), linha, 2);
+            jTable1.setValueAt(u.getDataNascimento(), linha, 3);
+        }
     }
 
     /**

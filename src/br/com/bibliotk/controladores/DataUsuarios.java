@@ -4,9 +4,6 @@
  */
 package br.com.bibliotk.controladores;
 
-import br.com.bibliotk.models.Usuario;
-import java.util.ArrayList;
-
 /**
  *
  * @author Ivanilson
