@@ -411,6 +411,7 @@ public class CadastrarUsuario extends javax.swing.JInternalFrame {
             Database.addUsuario(u);
             
             JOptionPane.showMessageDialog(this, "Usuário adicionado com sucesso", "Usuário adicionado", JOptionPane.INFORMATION_MESSAGE);
+            
             this.dispose();
             
         } catch(Exception e) {

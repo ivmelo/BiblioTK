@@ -7,6 +7,7 @@ package br.com.bibliotk.gui;
 import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Usuario;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,26 +21,39 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
      */
     public GerenciarUsuarios() {
         initComponents();
+        this.insertTestData();
         this.updateTable();
+    }
+    
+    private void insertTestData() {
+        Usuario u = new Usuario();
+        u.setNome("Rafael Garcia");
+        u.setCpf("051.977.684-44");
+        u.setEmail("rafbgarcia@gmail.com");
+        Database.addUsuario(u);
+        Database.addUsuario(u);
+        Database.addUsuario(u);
+        Database.addUsuario(u);
+        Database.addUsuario(u);
     }
     
     private void updateTable() {
         DefaultTableModel tTabela;
-        tTabela = (DefaultTableModel) jTable1.getModel();
+        tTabela = (DefaultTableModel) tblUsuarios.getModel();
         tTabela.setNumRows(0);
  
-        ArrayList<Usuario> usuarios = Database.getUsuarios();
+        int length = Database.getUsuarios().size();
  
-        for (int linha = 0; linha < usuarios.size(); linha++)
+        for (int linha = 0; linha < length; linha++)
         {
-            Usuario u = usuarios.get(linha);
+            Usuario u = Database.getUsuarios().get(linha);
  
             tTabela.addRow(new Object[]{1});
  
-            jTable1.setValueAt(u.getId(), linha, 0);
-            jTable1.setValueAt(u.getNome(), linha, 1);
-            jTable1.setValueAt(u.getCpf(), linha, 2);
-            jTable1.setValueAt(u.getDataNascimento(), linha, 3);
+            tblUsuarios.setValueAt(u.getId(), linha, 0);
+            tblUsuarios.setValueAt(u.getNome(), linha, 1);
+            tblUsuarios.setValueAt(u.getCpf(), linha, 2);
+            tblUsuarios.setValueAt(u.getDataNascimento(), linha, 3);
         }
     }
 
@@ -56,9 +70,9 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        tblUsuarios = new javax.swing.JTable();
+        btnExcluir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setClosable(true);
@@ -66,7 +80,7 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
 
         jButton1.setText("Buscar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -85,11 +99,16 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblUsuarios);
 
-        jButton2.setText("Excluir");
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Editar");
+        btnEditar.setText("Editar");
 
         jButton4.setText("Novo");
 
@@ -109,9 +128,9 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(btnExcluir)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,8 +144,8 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnEditar)
                     .addComponent(jButton4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -144,14 +163,28 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int row = tblUsuarios.getSelectedRow();
+        if(row >= 0) {
+            int resposta = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir este usuário?");
+            if(resposta == JOptionPane.YES_OPTION) {
+                Database.deleteUsuario(row);
+                this.updateTable();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um usuário para excluir!");
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblUsuarios;
     // End of variables declaration//GEN-END:variables
 }

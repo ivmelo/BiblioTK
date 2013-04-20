@@ -29,4 +29,8 @@ public class Database {
         Database.usuarios.add(usuario);
     }
     
+    public static void deleteUsuario(int index) {
+        Database.usuarios.remove(index);
+    }
+    
 }
