@@ -1,5 +1,6 @@
 package br.com.bibliotk.models;
 
+import br.com.bibliotk.controllers.GeradorID;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +26,8 @@ public class Database {
     }
     
     public static void addUsuario(Usuario usuario) {
-        usuario.setId(Database.usuarios.size());
+        // Pega id do usuário da classe GeradorID
+        usuario.setId(GeradorID.getIdUsuario());
         Database.usuarios.add(usuario);
     }
     
