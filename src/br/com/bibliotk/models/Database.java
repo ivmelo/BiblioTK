@@ -8,8 +8,8 @@ import java.util.ArrayList;
  */
 public class Database {
     
-    private static ArrayList<Livro> livros = new ArrayList<Livro>();
-    private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    private static ArrayList<Livro> livros = new ArrayList<>();
+    private static ArrayList<Usuario> usuarios = new ArrayList<>();
     
     
     public static ArrayList<Livro> getLivros() {
