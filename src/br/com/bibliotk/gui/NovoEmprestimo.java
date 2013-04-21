@@ -138,13 +138,14 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodLivroActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
+        Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
+        
         try {
-            Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
-            Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
             txtNomeUsuario.setText(u.getNome());
             txtTituloLivro.setText(l.getTitulo());
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(this, "Informe os campos corretamente!");
+        } catch(NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Dados incorretos!");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
