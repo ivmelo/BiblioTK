@@ -19,4 +19,9 @@ public class Helper {
         return new java.sql.Date(format.parse(dateText).getTime());
     }
     
+    public static String formatDate(Date date) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");   
+        return formato.format(date); 
+    }
+    
 }

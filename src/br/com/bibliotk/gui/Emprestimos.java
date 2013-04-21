@@ -4,6 +4,14 @@
  */
 package br.com.bibliotk.gui;
 
+import br.com.bibliotk.models.Database;
+import br.com.bibliotk.models.Emprestimo;
+import br.com.bibliotk.models.Helper;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ivanilson
@@ -15,6 +23,29 @@ public class Emprestimos extends javax.swing.JInternalFrame {
      */
     public Emprestimos() {
         initComponents();
+        updateTable();
+    }
+    
+    
+    private void updateTable() {
+        DefaultTableModel tTabela;
+        tTabela = (DefaultTableModel) tblEmprestimos.getModel();
+        tTabela.setNumRows(0);
+ 
+        int length = Database.getEmprestimos().size();
+        ArrayList<Emprestimo> emprestimos = Database.getEmprestimos();
+ 
+        for (int linha = 0; linha < length; linha++)
+        {
+            Emprestimo u = emprestimos.get(linha);
+ 
+            tTabela.addRow(new Object[]{1});
+ 
+            tblEmprestimos.setValueAt(u.getUsuario().getNome(), linha, 0);
+            tblEmprestimos.setValueAt(u.getLivro().getTitulo(), linha, 1);
+            tblEmprestimos.setValueAt(Helper.formatDate(u.getDataEmprestimo()), linha, 2);
+            tblEmprestimos.setValueAt(Helper.formatDate(u.getDataDevolucao()), linha, 3);
+        }
     }
 
     /**
@@ -30,7 +61,7 @@ public class Emprestimos extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblLivros = new javax.swing.JTable();
+        tblEmprestimos = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -47,7 +78,7 @@ public class Emprestimos extends javax.swing.JInternalFrame {
 
         jButton1.setText("Buscar");
 
-        tblLivros.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmprestimos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,7 +86,7 @@ public class Emprestimos extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Livro", "Título do Livro", "ID Usuário", "Nome do Usuário"
+                "Usuário", " Livro", "Data empréstimo", "Data devolução"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -66,7 +97,7 @@ public class Emprestimos extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblLivros);
+        jScrollPane1.setViewportView(tblEmprestimos);
 
         jButton4.setText("Novo");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +192,10 @@ public class Emprestimos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tblLivros;
+    private javax.swing.JTable tblEmprestimos;
     // End of variables declaration//GEN-END:variables
+
+    private void Calendar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
