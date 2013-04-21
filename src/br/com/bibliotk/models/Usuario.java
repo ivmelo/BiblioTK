@@ -28,6 +28,23 @@ public class Usuario {
     private Date dataCadastro;
     private boolean aptoEmprestimo;
 
+    public Usuario(String nome, String cpf, Date dataNascimento, String sexo, String email, String telefone, String celular, String rua, int num, String bairro, String complemento, String uf, String municipio) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.email = email;
+        this.telefone = telefone;
+        this.celular = celular;
+        this.rua = rua;
+        this.num = num;
+        this.bairro = bairro;
+        this.complemento = complemento;
+        this.uf = uf;
+        this.municipio = municipio;
+        this.dataCadastro = new Date(System.currentTimeMillis());
+    }
+    
     public int getId() {
         return id;
     }

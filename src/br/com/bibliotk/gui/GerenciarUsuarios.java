@@ -5,6 +5,7 @@
 package br.com.bibliotk.gui;
 
 import br.com.bibliotk.models.Database;
+import br.com.bibliotk.models.Helper;
 import br.com.bibliotk.models.Usuario;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,12 +28,25 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
     private void insertTestData() {
         if(Database.getUsuarios().isEmpty()) {
             for (int i = 0; i < 5; i++) {
-                Usuario u = new Usuario();
-                u.setNome("Rafael Garcia");
-                u.setCpf("051.977.684-44");
-                u.setEmail("rafbgarcia@gmail.com");
+                try{
+                    Usuario u = new Usuario(
+                        "Rafael Garcia",
+                        "192391239",
+                        Helper.toDate("17/10/1990"),
+                        "Masculino",
+                        "rafbgarcia@gmail.com",
+                        "123132",
+                        "1231237",
+                        "RUA",
+                        123,
+                        "TIROL",
+                        "PERTO",
+                        "RN",
+                        "Natal"
+                    );
+                    Database.addUsuario(u);
+                }catch(Exception e) {}
                 
-                Database.addUsuario(u);
             }
         }
     }
@@ -53,7 +67,7 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
             tblUsuarios.setValueAt(u.getId(), linha, 0);
             tblUsuarios.setValueAt(u.getNome(), linha, 1);
             tblUsuarios.setValueAt(u.getCpf(), linha, 2);
-            tblUsuarios.setValueAt(u.getDataNascimento(), linha, 3);
+            tblUsuarios.setValueAt(Helper.formatDate(u.getDataNascimento()), linha, 3);
         }
     }
 
