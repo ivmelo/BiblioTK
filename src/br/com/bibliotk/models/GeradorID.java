@@ -14,14 +14,14 @@ public class GeradorID {
     public static int idEmprestimo = 0;
     
     public static int getIdUsuario(){
-        return idUsuario++;
+        return ++idUsuario;
     }
  
     public static int getIdLivro(){
-        return idLivro++;
+        return ++idLivro;
     }
  
     public static int getIdEmprestimo(){
-        return idEmprestimo++;
+        return ++idEmprestimo;
     }
 }

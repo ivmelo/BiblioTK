@@ -22,6 +22,7 @@ public class Database {
     }
     
     public static void addLivro(Livro livro) {
+        livro.setId(GeradorID.getIdLivro());
         Database.livros.add(livro);
     }
     
