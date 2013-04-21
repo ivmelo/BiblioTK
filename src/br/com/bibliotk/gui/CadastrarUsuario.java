@@ -5,6 +5,7 @@
 package br.com.bibliotk.gui;
 
 import br.com.bibliotk.models.Database;
+import br.com.bibliotk.models.Helper;
 import br.com.bibliotk.models.Usuario;
 import javax.swing.JOptionPane;
 
@@ -388,21 +389,23 @@ public class CadastrarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCpfActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Usuario u = new Usuario();
         
         try {
-            u.setNome(txtNome.getText());
-            u.setCpf(txtCpf.getText());
-            u.setTelefone(txtTelefone.getText());
-            u.setCelular(txtCelular.getText());
-            u.setBairro(txtBairro.getText());
-            u.setComplemento(txtComplemento.getText());
-            u.setEmail(txtEmail.getText());
-            u.setMunicipio(txtCidade.getText());
-            u.setNum(Integer.parseInt(txtNumero.getText()));
-            u.setUf(txtUf.getSelectedObjects()[0].toString());
-            u.setRua(txtLogradouro.getText());
-            u.setSexo(txtSexoM.getSelectedObjects()[0].toString());
+            Usuario u = new Usuario(
+                txtNome.getText(),
+                txtCpf.getText(),
+                Helper.toDate(txtDataNascimento.getText()),
+                txtSexoM.getSelectedObjects()[0].toString(),
+                txtEmail.getText(),
+                txtTelefone.getText(),
+                txtCelular.getText(),
+                txtLogradouro.getText(),
+                Integer.parseInt(txtNumero.getText()),
+                txtBairro.getText(),
+                txtComplemento.getText(),
+                txtUf.getSelectedObjects()[0].toString(),
+                txtCidade.getText()
+            );
 
             Database.addUsuario(u);
             

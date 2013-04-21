@@ -8,6 +8,7 @@ import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Helper;
 import br.com.bibliotk.models.Livro;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -56,6 +57,10 @@ public class GerenciarLivros extends javax.swing.JInternalFrame {
  
             tTabela.addRow(new Object[]{1});
  
+            
+            Calendar c = Calendar.getInstance();
+            c.setTimeInMillis(u.getData().getTime());
+            
             tblLivros.setValueAt(u.getId(), linha, 0);
             tblLivros.setValueAt(u.getTitulo(), linha, 1);
             tblLivros.setValueAt(u.getAutor(), linha, 2);
