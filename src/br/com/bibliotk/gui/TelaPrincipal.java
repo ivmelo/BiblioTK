@@ -5,6 +5,8 @@
 package br.com.bibliotk.gui;
 
 import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -82,6 +84,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu5.add(jMenuItem7);
 
         jMenuItem8.setText("Empréstimos Atuais");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem8);
 
         jMenuBar1.add(jMenu5);
@@ -148,7 +155,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
         );
 
         pack();
@@ -203,6 +210,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
+        Devolucao devolucao = new Devolucao();
+        devolucao.setVisible(true);
+        jDesktopPane1.add(devolucao);
+        try {
+            devolucao.setSelected(true);
+        } catch (PropertyVetoException ex) {}
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
@@ -221,6 +234,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
             novoEmprestimo.setSelected(true);
         } catch (PropertyVetoException ex) {}
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        EmprestimosAtuais emprestimosAtuais = new EmprestimosAtuais();
+        emprestimosAtuais.setVisible(true);
+        jDesktopPane1.add(emprestimosAtuais);
+        try {
+            emprestimosAtuais.setSelected(true);
+        } catch (PropertyVetoException ex) {}
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
