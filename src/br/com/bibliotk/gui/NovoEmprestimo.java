@@ -145,10 +145,10 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodLivroActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
-        Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
-        
         try {
+            Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
+            Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
+            
             txtNomeUsuario.setText(u.getNome());
             txtTituloLivro.setText(l.getTitulo());
             btnEmprestar.setEnabled(true);
@@ -156,7 +156,9 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
             btnEmprestar.setEnabled(false);
             txtNomeUsuario.setText("");
             txtTituloLivro.setText("");
-            JOptionPane.showMessageDialog(this, "Dados incorretos!");
+            JOptionPane.showMessageDialog(this, "Dados não constam no banco de dados!");
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Informe o código do livro e do usuário!");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
