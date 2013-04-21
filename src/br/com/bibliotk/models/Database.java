@@ -75,5 +75,38 @@ public class Database {
         emprestimos.add(emprestimo);
     }
     
+    public static void excluirEmprestimo(Emprestimo emprestimo){
+        for(Emprestimo e : emprestimos){
+            if(e.equals(emprestimo)){
+                emprestimos.remove(e);
+            }
+        }
+    }
+    
+    public static void excluirEmprestimoPorId(int id){
+        for(Emprestimo e : emprestimos){
+            if(e.getId() == id){
+                emprestimos.remove(e);
+            }
+        }
+    }
+    
+    public static Emprestimo encontrarEmprestimoIdEmprestimo(int idEmprestimo){
+        for(Emprestimo e: emprestimos){
+            if(e.getId() == idEmprestimo){
+                return e;
+            }
+        }
+        return null;
+    }
+    
+    public static Emprestimo encontrarEmprestimoIdLivro(int idLivro){
+        for(Emprestimo e: emprestimos){
+            if(e.getLivro().getId() == idLivro) {
+                return e;
+            }
+        }
+        return null;
+    }
     
 }
