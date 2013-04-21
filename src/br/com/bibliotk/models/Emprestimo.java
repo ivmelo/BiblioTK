@@ -11,16 +11,26 @@ import java.util.Date;
  * @author rafael
  */
 public class Emprestimo {
+    private int id;
     private Usuario usuario;
     private Livro livro;
     private long dataEmprestimo;
     private long dataDevolucao;
     
-    public Emprestimo(Usuario usuario, Livro livro) {
+    public Emprestimo(int id, Usuario usuario, Livro livro) {
+        this.id = id;
         this.livro = livro;
         this.usuario = usuario;
         dataEmprestimo = new Date().getTime();
         dataDevolucao = dataEmprestimo + (60*60*24*7); // 7 dias
+    }
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId(){
+        return this.id;
     }
 
     public Usuario getUsuario() {
