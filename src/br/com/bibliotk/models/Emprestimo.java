@@ -11,6 +11,7 @@ import java.util.Date;
  * @author rafael
  */
 public class Emprestimo {
+    
     private int id;
     private Usuario usuario;
     private Livro livro;
