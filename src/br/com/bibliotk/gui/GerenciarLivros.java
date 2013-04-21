@@ -56,10 +56,6 @@ public class GerenciarLivros extends javax.swing.JInternalFrame {
             Livro u = livros.get(linha);
  
             tTabela.addRow(new Object[]{1});
- 
-            
-            Calendar c = Calendar.getInstance();
-            c.setTimeInMillis(u.getData().getTime());
             
             tblLivros.setValueAt(u.getId(), linha, 0);
             tblLivros.setValueAt(u.getTitulo(), linha, 1);
