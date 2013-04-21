@@ -6,6 +6,7 @@ package br.com.bibliotk.gui;
 
 import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Emprestimo;
+import br.com.bibliotk.models.GeradorID;
 import br.com.bibliotk.models.Livro;
 import br.com.bibliotk.models.Usuario;
 import javax.swing.JOptionPane;
@@ -163,7 +164,7 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
         Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
         Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
         
-        Emprestimo e = new Emprestimo(u, l);
+        Emprestimo e = new Emprestimo(GeradorID.idEmprestimo, u, l);
         Database.addEmprestimo(e);
         
         JOptionPane.showMessageDialog(this, "Emprestimo efetuado!");
