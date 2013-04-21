@@ -34,7 +34,7 @@ public class GerenciarLivros extends javax.swing.JInternalFrame {
                 u.setAutor("Alguem da Silva");
                 u.setEditora("Saraiva");
                 try {
-                    u.setData(Helper.toDate("12/04/2000"));
+                    u.setAno(2000);
                 } catch(Exception e) { }
 
                 Database.addLivro(u);
@@ -59,7 +59,7 @@ public class GerenciarLivros extends javax.swing.JInternalFrame {
             tblLivros.setValueAt(u.getId(), linha, 0);
             tblLivros.setValueAt(u.getTitulo(), linha, 1);
             tblLivros.setValueAt(u.getAutor(), linha, 2);
-            tblLivros.setValueAt(u.getData(), linha, 3);
+            tblLivros.setValueAt(u.getAno(), linha, 3);
             tblLivros.setValueAt(u.getEditora(), linha, 4);
         }
     }
