@@ -39,9 +39,9 @@ public class CadastrarLivro extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtLocal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtData = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         txtEditora = new javax.swing.JTextField();
+        txtAno = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtIsbn = new javax.swing.JTextField();
@@ -64,13 +64,7 @@ public class CadastrarLivro extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Local:");
 
-        jLabel4.setText("Data de Publicação:");
-
-        try {
-            txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jLabel4.setText("Ano de Publicação:");
 
         jLabel5.setText("Editora:");
 
@@ -92,10 +86,10 @@ public class CadastrarLivro extends javax.swing.JInternalFrame {
                     .addComponent(txtTitulo)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                        .addComponent(txtAno, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
                     .addComponent(txtEditora, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -115,7 +109,7 @@ public class CadastrarLivro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -226,7 +220,7 @@ public class CadastrarLivro extends javax.swing.JInternalFrame {
             u.setTitulo(txtTitulo.getText());
             u.setAutor(txtAutor.getText());
             u.setLocal(txtLocal.getText());
-            u.setData(Helper.toDate(txtData.getText()));
+            u.setAno(Integer.valueOf(txtAno.getText()));
             u.setEditora(txtEditora.getText());
             u.setIsbn(txtIsbn.getText());
             u.setLocalizacao(txtLocalizacao.getText());
@@ -260,9 +254,9 @@ public class CadastrarLivro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtAno;
     private javax.swing.JTextField txtAssuntosRelacionados;
     private javax.swing.JTextField txtAutor;
-    private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtEditora;
     private javax.swing.JTextField txtIsbn;
     private javax.swing.JTextField txtLocal;
