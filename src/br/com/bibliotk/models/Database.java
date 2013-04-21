@@ -32,9 +32,31 @@ public class Database {
     
     public static Livro encontrarLivro(int id) {
         for(Livro l : livros) {
-            if(l.getId() == id) return l;
+            if(l.getId() == id) {
+                return l;
+            }
         }
         return null;
+    }
+    
+    public static void setIndisponivel(int id){
+        for(Livro l : livros){
+            if (l.getId() == id){
+                livros.remove(l);
+                l.setDisponivel(false);
+                livros.add(l);
+            }
+        }
+    }
+    
+    public static void setDisponivel(int id){
+        for(Livro l : livros){
+            if (l.getId() == id){
+                livros.remove(l);
+                l.setDisponivel(true);
+                livros.add(l);
+            }
+        }
     }
     
     
@@ -57,7 +79,9 @@ public class Database {
     
     public static Usuario encontrarUsuario(int id) {
         for(Usuario u : usuarios) {
-            if(u.getId() == id) return u;
+            if(u.getId() == id) {
+                return u;
+            }
         }
         return null;
     }

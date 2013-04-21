@@ -5,10 +5,8 @@
 package br.com.bibliotk.gui;
 
 import br.com.bibliotk.models.Database;
-import br.com.bibliotk.models.Helper;
 import br.com.bibliotk.models.Livro;
 import java.util.ArrayList;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,6 +32,7 @@ public class GerenciarLivros extends javax.swing.JInternalFrame {
                 u.setTitulo("C guia oficial");
                 u.setAutor("Alguem da Silva");
                 u.setEditora("Saraiva");
+                u.setDisponivel(true);
                 try {
                     u.setAno(2000);
                 } catch(Exception e) { }
@@ -62,6 +61,7 @@ public class GerenciarLivros extends javax.swing.JInternalFrame {
             tblLivros.setValueAt(u.getAutor(), linha, 2);
             tblLivros.setValueAt(u.getAno(), linha, 3);
             tblLivros.setValueAt(u.getEditora(), linha, 4);
+            tblLivros.setValueAt(u.getDisponivel(), linha, 5);
         }
     }
     

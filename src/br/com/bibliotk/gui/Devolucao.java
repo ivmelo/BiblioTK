@@ -159,6 +159,8 @@ public class Devolucao extends javax.swing.JInternalFrame {
         emp = Database.encontrarEmprestimoIdLivro(Integer.parseInt(txtCodLivro.getText()));
 
         Database.excluirEmprestimo(emp);
+        
+        Database.setDisponivel(emp.getLivro().getId());
 
         JOptionPane.showMessageDialog(this, "Devolução efetuada!");
         this.dispose();

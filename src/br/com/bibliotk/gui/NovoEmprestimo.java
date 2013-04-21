@@ -166,8 +166,12 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
         Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
         Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
         
+        l.setDisponivel(false);
+        
         Emprestimo e = new Emprestimo(GeradorID.idEmprestimo, u, l);
         Database.addEmprestimo(e);
+        
+        Database.setIndisponivel(l.getId());
         
         JOptionPane.showMessageDialog(this, "Emprestimo efetuado!");
         this.dispose();

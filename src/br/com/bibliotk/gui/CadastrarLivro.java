@@ -225,6 +225,7 @@ public class CadastrarLivro extends javax.swing.JInternalFrame {
             u.setIsbn(txtIsbn.getText());
             u.setLocalizacao(txtLocalizacao.getText());
             u.setAssuntosRelacionados(txtAssuntosRelacionados.getText());
+            u.setDisponivel(true);
 
             Database.addLivro(u);
             
