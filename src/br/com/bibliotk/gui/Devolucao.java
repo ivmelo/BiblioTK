@@ -36,7 +36,7 @@ public class Devolucao extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Novo Empréstimo - BIblioTK");
+        setTitle("Devolução - BIblioTK");
 
         jLabel1.setText("Cod. Livro:");
 
