@@ -237,11 +237,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        EmprestimosAtuais emprestimosAtuais = new EmprestimosAtuais();
-        emprestimosAtuais.setVisible(true);
-        jDesktopPane1.add(emprestimosAtuais);
+        Emprestimos emprestimos = new Emprestimos();
+        emprestimos.setVisible(true);
+        jDesktopPane1.add(emprestimos);
         try {
-            emprestimosAtuais.setSelected(true);
+            emprestimos.setSelected(true);
         } catch (PropertyVetoException ex) {}
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
