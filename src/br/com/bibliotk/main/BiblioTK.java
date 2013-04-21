@@ -4,7 +4,7 @@
  */
 package br.com.bibliotk.main;
 
-import br.com.bibliotk.controllers.GeradorID;
+import br.com.bibliotk.models.GeradorID;
 import br.com.bibliotk.gui.TelaPrincipal;
 
 /**
