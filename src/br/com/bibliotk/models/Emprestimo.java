@@ -13,8 +13,15 @@ import java.util.Date;
 public class Emprestimo {
     private Usuario usuario;
     private Livro livro;
-    private Date dataEmprestimo;
-    private Date dataDevolucao;
+    private long dataEmprestimo;
+    private long dataDevolucao;
+    
+    public Emprestimo(Usuario usuario, Livro livro) {
+        this.livro = livro;
+        this.usuario = usuario;
+        dataEmprestimo = new Date().getTime();
+        dataDevolucao = dataEmprestimo + (60*60*24*7); // 7 dias
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -32,19 +39,20 @@ public class Emprestimo {
         this.livro = livro;
     }
 
-    public Date getDataEmprestimo() {
+    public long getDataEmprestimo() {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(Date dataEmprestimo) {
+    public void setDataEmprestimo(long dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public Date getDataDevolucao() {
+    public long getDataDevolucao() {
         return dataDevolucao;
     }
 
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(long dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
+
 }

@@ -5,6 +5,7 @@
 package br.com.bibliotk.gui;
 
 import br.com.bibliotk.models.Database;
+import br.com.bibliotk.models.Emprestimo;
 import br.com.bibliotk.models.Livro;
 import br.com.bibliotk.models.Usuario;
 import javax.swing.JOptionPane;
@@ -40,7 +41,7 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtTituloLivro = new javax.swing.JTextField();
         txtNomeUsuario = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnEmprestar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Novo Empréstimo - BIblioTK");
@@ -70,8 +71,13 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
 
         txtNomeUsuario.setEnabled(false);
 
-        jButton2.setText("Emprestar");
-        jButton2.setEnabled(false);
+        btnEmprestar.setText("Emprestar");
+        btnEmprestar.setEnabled(false);
+        btnEmprestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmprestarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +107,7 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnEmprestar, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
@@ -127,7 +133,7 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btnEmprestar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -144,14 +150,29 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
         try {
             txtNomeUsuario.setText(u.getNome());
             txtTituloLivro.setText(l.getTitulo());
+            btnEmprestar.setEnabled(true);
         } catch(NullPointerException e) {
+            btnEmprestar.setEnabled(false);
+            txtNomeUsuario.setText("");
+            txtTituloLivro.setText("");
             JOptionPane.showMessageDialog(this, "Dados incorretos!");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmprestarActionPerformed
+        Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
+        Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
+        
+        Emprestimo e = new Emprestimo(u, l);
+        Database.addEmprestimo(e);
+        
+        JOptionPane.showMessageDialog(this, "Emprestimo efetuado!");
+        this.dispose();
+    }//GEN-LAST:event_btnEmprestarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEmprestar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -23,15 +23,15 @@ public class Database {
     
     public static void addLivro(Livro livro) {
         livro.setId(GeradorID.getIdLivro());
-        Database.livros.add(livro);
+        livros.add(livro);
     }
     
     public static void excluirLivro(int index) {
-        Database.livros.remove(index);
+        livros.remove(index);
     }
     
     public static Livro encontrarLivro(int id) {
-        for(Livro l : Database.livros) {
+        for(Livro l : livros) {
             if(l.getId() == id) return l;
         }
         return null;
@@ -43,9 +43,8 @@ public class Database {
      */
     
     public static void addUsuario(Usuario usuario) {
-        // Pega id do usuário da classe GeradorID
         usuario.setId(GeradorID.getIdUsuario());
-        Database.usuarios.add(usuario);
+        usuarios.add(usuario);
     }
 
     public static ArrayList<Usuario> getUsuarios() {
@@ -53,11 +52,11 @@ public class Database {
     }
     
     public static void excluirUsuario(int index) {
-        Database.usuarios.remove(index);
+        usuarios.remove(index);
     }
     
     public static Usuario encontrarUsuario(int id) {
-        for(Usuario u : Database.usuarios) {
+        for(Usuario u : usuarios) {
             if(u.getId() == id) return u;
         }
         return null;
@@ -71,6 +70,10 @@ public class Database {
     public static ArrayList<Emprestimo> getEmprestimos() {
         return emprestimos;
     }    
+    
+    public static void addEmprestimo(Emprestimo emprestimo) {
+        emprestimos.add(emprestimo);
+    }
     
     
 }
