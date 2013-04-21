@@ -4,12 +4,8 @@
  */
 package br.com.bibliotk.gui;
 
-import br.com.bibliotk.enums.Sexo;
-import br.com.bibliotk.enums.UF;
 import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Usuario;
-import static java.awt.image.ImageObserver.WIDTH;
-import java.beans.PropertyVetoException;
 import javax.swing.JOptionPane;
 
 /**

@@ -6,7 +6,6 @@ package br.com.bibliotk.gui;
 
 import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Usuario;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -169,7 +168,7 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
         if(row >= 0) {
             int resposta = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir este usuário?");
             if(resposta == JOptionPane.YES_OPTION) {
-                Database.deleteUsuario(row);
+                Database.excluirUsuario(row);
                 this.updateTable();
             }
         } else {

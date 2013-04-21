@@ -25,13 +25,17 @@ public class Database {
         return usuarios;
     }
     
+    public static void excluirLivro(int index) {
+        Database.livros.remove(index);
+    }
+    
     public static void addUsuario(Usuario usuario) {
         // Pega id do usuário da classe GeradorID
         usuario.setId(GeradorID.getIdUsuario());
         Database.usuarios.add(usuario);
     }
     
-    public static void deleteUsuario(int index) {
+    public static void excluirUsuario(int index) {
         Database.usuarios.remove(index);
     }
     
