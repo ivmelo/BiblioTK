@@ -10,8 +10,8 @@ códigos fonte.
 
 ### Equipe de desenvolvimento:
 
-Rafael Garcia (@rafbgarcia)
+Rafael Garcia (https://github.com/rafbgarcia)
 
-Ivanilson Melo (@ivmjunior)
+Ivanilson Melo (https://github.com/ivmjunior)
 
-Pedro Paulo (@MrZord)
+Pedro Paulo (https://github.com/MrZord)
