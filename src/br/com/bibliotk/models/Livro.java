@@ -4,8 +4,6 @@
  */
 package br.com.bibliotk.models;
 
-import java.util.Date;
-
 /**
  *
  * @author Ivanilson
@@ -17,7 +15,7 @@ public class Livro {
     private String local;
     private String editora;
     private String isbn;
-    private Date data;
+    private int ano;
     private String localizacao;
     private String assuntosRelacionados;
     private boolean disponivel;
@@ -70,12 +68,12 @@ public class Livro {
         this.isbn = isbn;
     }
 
-    public Date getData() {
-        return data;
+    public int getAno() {
+        return ano;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
     public String getLocalizacao() {
