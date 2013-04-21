@@ -25,15 +25,17 @@ public class GerenciarUsuarios extends javax.swing.JInternalFrame {
     }
     
     private void insertTestData() {
-        Usuario u = new Usuario();
-        u.setNome("Rafael Garcia");
-        u.setCpf("051.977.684-44");
-        u.setEmail("rafbgarcia@gmail.com");
-        Database.addUsuario(u);
-        Database.addUsuario(u);
-        Database.addUsuario(u);
-        Database.addUsuario(u);
-        Database.addUsuario(u);
+        if(Database.getUsuarios().isEmpty()) {
+            Usuario u = new Usuario();
+            u.setNome("Rafael Garcia");
+            u.setCpf("051.977.684-44");
+            u.setEmail("rafbgarcia@gmail.com");
+            Database.addUsuario(u);
+            Database.addUsuario(u);
+            Database.addUsuario(u);
+            Database.addUsuario(u);
+            Database.addUsuario(u);
+        }
     }
     
     private void updateTable() {

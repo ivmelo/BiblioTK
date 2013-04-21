@@ -22,25 +22,26 @@ public class GerenciarLivros extends javax.swing.JInternalFrame {
      */
     public GerenciarLivros() {
         initComponents();
-        
         this.insertTestData();
         this.updateTable();
     }
     
     private void insertTestData() {
-        Livro u = new Livro();
-        u.setTitulo("C guia oficial");
-        u.setAutor("Alguem da Silva");
-        u.setEditora("Saraiva");
-        try {
-            u.setData(Helper.toDate("12/04/2000"));
-        } catch(Exception e) { }
-        
-        Database.addLivro(u);
-        Database.addLivro(u);
-        Database.addLivro(u);
-        Database.addLivro(u);
-        Database.addLivro(u);
+        if(Database.getLivros().isEmpty()) {
+            Livro u = new Livro();
+            u.setTitulo("C guia oficial");
+            u.setAutor("Alguem da Silva");
+            u.setEditora("Saraiva");
+            try {
+                u.setData(Helper.toDate("12/04/2000"));
+            } catch(Exception e) { }
+
+            Database.addLivro(u);
+            Database.addLivro(u);
+            Database.addLivro(u);
+            Database.addLivro(u);
+            Database.addLivro(u);
+        }
     }
     
     private void updateTable() {
