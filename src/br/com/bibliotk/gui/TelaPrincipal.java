@@ -5,8 +5,6 @@
 package br.com.bibliotk.gui;
 
 import java.beans.PropertyVetoException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -177,7 +175,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        
         CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
         cadastrarUsuario.setVisible(true);
         jDesktopPane1.add(cadastrarUsuario);
@@ -187,7 +186,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        
         CadastrarLivro cadastrarLivro = new CadastrarLivro();
         cadastrarLivro.setVisible(true);
         jDesktopPane1.add(cadastrarLivro);
@@ -197,7 +197,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        
         GerenciarUsuarios gerenciarUsuarios = new GerenciarUsuarios();
         gerenciarUsuarios.setVisible(true);
         jDesktopPane1.add(gerenciarUsuarios);
@@ -207,7 +208,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        
         GerenciarLivros gerenciarLivros = new GerenciarLivros();
         gerenciarLivros.setVisible(true);
         jDesktopPane1.add(gerenciarLivros);
@@ -217,13 +219,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
         Sobre sobre = new Sobre();
         sobre.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        
         Devolucao devolucao = new Devolucao();
         devolucao.setVisible(true);
         jDesktopPane1.add(devolucao);
@@ -240,7 +242,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        
         NovoEmprestimo novoEmprestimo = new NovoEmprestimo();
         novoEmprestimo.setVisible(true);
         jDesktopPane1.add(novoEmprestimo);
@@ -250,7 +253,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        
         Emprestimos emprestimos = new Emprestimos();
         emprestimos.setVisible(true);
         jDesktopPane1.add(emprestimos);
