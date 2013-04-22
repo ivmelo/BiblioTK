@@ -4,12 +4,12 @@
  */
 package br.com.bibliotk.gui;
 
+import br.com.bibliotk.exceptions.RegistroNaoEncontradoException;
 import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Emprestimo;
 import br.com.bibliotk.models.GeradorID;
 import br.com.bibliotk.models.Livro;
 import br.com.bibliotk.models.Usuario;
-import java.util.ConcurrentModificationException;
 import javax.swing.JOptionPane;
 
 /**
@@ -166,28 +166,35 @@ public class NovoEmprestimo extends javax.swing.JInternalFrame {
             txtNomeUsuario.setText(u.getNome());
             txtTituloLivro.setText(l.getTitulo());
             btnEmprestar.setEnabled(true);
-        } catch(NullPointerException e) {
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Informe o código do livro e do usuário!");
+        } catch (RegistroNaoEncontradoException ex) {
             btnEmprestar.setEnabled(false);
             txtNomeUsuario.setText("");
             txtTituloLivro.setText("");
-            JOptionPane.showMessageDialog(this, "Dados não constam no banco de dados!");
-        } catch(NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Informe o código do livro e do usuário!");
+            
+            JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmprestarActionPerformed
-        Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
-        Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
+        try {
+            Livro l = Database.encontrarLivro(Integer.parseInt(txtCodLivro.getText()));
+            Usuario u = Database.encontrarUsuario(Integer.parseInt(txtCodUsuario.getText()));
+            
+            l.setDisponivel(false);
+            
+            Emprestimo e = new Emprestimo(GeradorID.idEmprestimo, u, l);
+            
+            Database.addEmprestimo(e);
+            Database.setIndisponivel(l.getId());
+
+            JOptionPane.showMessageDialog(this, "Emprestimo efetuado!");
+        } catch(RegistroNaoEncontradoException ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
         
-        l.setDisponivel(false);
         
-        Emprestimo e = new Emprestimo(GeradorID.idEmprestimo, u, l);
-        Database.addEmprestimo(e);
-        
-        Database.setIndisponivel(l.getId());
-        
-        JOptionPane.showMessageDialog(this, "Emprestimo efetuado!");
         this.dispose();
     }//GEN-LAST:event_btnEmprestarActionPerformed
 

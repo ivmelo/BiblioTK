@@ -4,11 +4,11 @@
  */
 package br.com.bibliotk.gui;
 
+import br.com.bibliotk.exceptions.RegistroNaoEncontradoException;
 import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Emprestimo;
-import br.com.bibliotk.models.Livro;
-import br.com.bibliotk.models.Usuario;
-import java.util.ConcurrentModificationException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -150,31 +150,36 @@ public class Devolucao extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodLivroActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        Emprestimo emp;
-        emp = Database.encontrarEmprestimoIdLivro(Integer.parseInt(txtCodLivro.getText()));
-        
         try {
+            Emprestimo emp = Database.encontrarEmprestimoIdLivro(Integer.parseInt(txtCodLivro.getText()));
+            
             txtNomeUsuario.setText(emp.getUsuario().getNome());
             txtTituloLivro.setText(emp.getLivro().getTitulo());
             btnDevolver.setEnabled(true);
         } catch(NullPointerException e) {
-            btnDevolver.setEnabled(false);
+        } catch (RegistroNaoEncontradoException ex) {
             txtNomeUsuario.setText("");
             txtTituloLivro.setText("");
-            JOptionPane.showMessageDialog(this, "Id do livro incorreto!");
+            btnDevolver.setEnabled(false);
+            
+            JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
-        Emprestimo emp;
-        emp = Database.encontrarEmprestimoIdLivro(Integer.parseInt(txtCodLivro.getText()));
+        try {
+            Emprestimo emp = Database.encontrarEmprestimoIdLivro(Integer.parseInt(txtCodLivro.getText()));
+            
+            Database.excluirEmprestimoPorId(emp.getId());
+            Database.setDisponivel(emp.getLivro().getId());
 
-        Database.excluirEmprestimoPorId(emp.getId());
-        Database.setDisponivel(emp.getLivro().getId());
+            JOptionPane.showMessageDialog(this, "Devolução efetuada!");
+            
+            this.dispose();
+        } catch (RegistroNaoEncontradoException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
 
-        JOptionPane.showMessageDialog(this, "Devolução efetuada!");
-        this.dispose();
     }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -8,8 +8,6 @@ import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Emprestimo;
 import br.com.bibliotk.models.Helper;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,8 +33,7 @@ public class Emprestimos extends javax.swing.JInternalFrame {
         int length = Database.getEmprestimos().size();
         ArrayList<Emprestimo> emprestimos = Database.getEmprestimos();
  
-        for (int linha = 0; linha < length; linha++)
-        {
+        for (int linha = 0; linha < length; linha++) {
             Emprestimo u = emprestimos.get(linha);
  
             tTabela.addRow(new Object[]{1});

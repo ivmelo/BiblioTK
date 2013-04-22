@@ -1,5 +1,6 @@
 package br.com.bibliotk.models;
 
+import br.com.bibliotk.exceptions.RegistroNaoEncontradoException;
 import java.util.ArrayList;
 
 /**
@@ -30,13 +31,13 @@ public class Database {
         livros.remove(index);
     }
     
-    public static Livro encontrarLivro(int id) {
+    public static Livro encontrarLivro(int id) throws RegistroNaoEncontradoException {
         for(Livro l : livros) {
             if(l.getId() == id) {
                 return l;
             }
         }
-        return null;
+        throw new RegistroNaoEncontradoException("Livro não encontrado");
     }
     
     public static void setIndisponivel(int id){
@@ -77,13 +78,13 @@ public class Database {
         usuarios.remove(index);
     }
     
-    public static Usuario encontrarUsuario(int id) {
+    public static Usuario encontrarUsuario(int id) throws RegistroNaoEncontradoException {
         for(Usuario u : usuarios) {
             if(u.getId() == id) {
                 return u;
             }
         }
-        return null;
+        throw new RegistroNaoEncontradoException("Usuário não encontrado");
     }
     
     
@@ -120,22 +121,22 @@ public class Database {
         }
     }
     
-    public static Emprestimo encontrarEmprestimoIdEmprestimo(int idEmprestimo){
+    public static Emprestimo encontrarEmprestimoIdEmprestimo(int idEmprestimo) throws RegistroNaoEncontradoException{
         for(Emprestimo e: emprestimos){
             if(e.getId() == idEmprestimo){
                 return e;
             }
         }
-        return null;
+        throw new RegistroNaoEncontradoException("Emprestimo não encontrado");
     }
     
-    public static Emprestimo encontrarEmprestimoIdLivro(int idLivro){
+    public static Emprestimo encontrarEmprestimoIdLivro(int idLivro) throws RegistroNaoEncontradoException{
         for(Emprestimo e: emprestimos){
             if(e.getLivro().getId() == idLivro) {
                 return e;
             }
         }
-        return null;
+        throw new RegistroNaoEncontradoException("Emprestimo não encontrado");
     }
     
 }
