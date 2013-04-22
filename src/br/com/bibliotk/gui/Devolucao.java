@@ -8,6 +8,7 @@ import br.com.bibliotk.models.Database;
 import br.com.bibliotk.models.Emprestimo;
 import br.com.bibliotk.models.Livro;
 import br.com.bibliotk.models.Usuario;
+import java.util.ConcurrentModificationException;
 import javax.swing.JOptionPane;
 
 /**
@@ -166,12 +167,10 @@ public class Devolucao extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
-        // TODO add your handling code here:
         Emprestimo emp;
         emp = Database.encontrarEmprestimoIdLivro(Integer.parseInt(txtCodLivro.getText()));
 
-        Database.excluirEmprestimo(emp);
-        
+        Database.excluirEmprestimoPorId(emp.getId());
         Database.setDisponivel(emp.getLivro().getId());
 
         JOptionPane.showMessageDialog(this, "Devolução efetuada!");

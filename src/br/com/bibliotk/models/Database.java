@@ -40,21 +40,21 @@ public class Database {
     }
     
     public static void setIndisponivel(int id){
-        for(Livro l : livros){
-            if (l.getId() == id){
-                livros.remove(l);
-                l.setDisponivel(false);
-                livros.add(l);
+        int length = livros.size();
+        for(int i = 0; i < length; i++) {
+            if(livros.get(i).getId() == id) {
+                livros.get(i).setDisponivel(false);
+                return;
             }
         }
     }
     
     public static void setDisponivel(int id){
-        for(Livro l : livros){
-            if (l.getId() == id){
-                livros.remove(l);
-                l.setDisponivel(true);
-                livros.add(l);
+        int length = livros.size();
+        for(int i = 0; i < length; i++) {
+            if(livros.get(i).getId() == id) {
+                livros.get(i).setDisponivel(true);
+                return;
             }
         }
     }
@@ -96,21 +96,26 @@ public class Database {
     }    
     
     public static void addEmprestimo(Emprestimo emprestimo) {
+        emprestimo.setId(GeradorID.getIdEmprestimo());
         emprestimos.add(emprestimo);
     }
     
     public static void excluirEmprestimo(Emprestimo emprestimo){
-        for(Emprestimo e : emprestimos){
-            if(e.equals(emprestimo)){
-                emprestimos.remove(e);
+        int length = emprestimos.size();
+        for(int i = 0; i < length; i++) {
+            if(emprestimos.get(i).equals(emprestimo)) {
+                emprestimos.remove(i);
+                return;
             }
         }
     }
     
     public static void excluirEmprestimoPorId(int id){
-        for(Emprestimo e : emprestimos){
-            if(e.getId() == id){
-                emprestimos.remove(e);
+        int length = emprestimos.size();
+        for(int i = 0; i < length; i++) {
+            if(emprestimos.get(i).getId() == id) {
+                emprestimos.remove(i);
+                return;
             }
         }
     }

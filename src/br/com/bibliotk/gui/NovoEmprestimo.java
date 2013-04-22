@@ -9,6 +9,7 @@ import br.com.bibliotk.models.Emprestimo;
 import br.com.bibliotk.models.GeradorID;
 import br.com.bibliotk.models.Livro;
 import br.com.bibliotk.models.Usuario;
+import java.util.ConcurrentModificationException;
 import javax.swing.JOptionPane;
 
 /**
